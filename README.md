@@ -193,7 +193,7 @@ POST /predict
 ## Clone Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/SoftGrowTech_Fake_News_Detection.git
+git clone https://github.com/bhanuxai/SoftGrowTech_Fake_News_Detection.git
 ```
 
 ---
@@ -234,27 +234,7 @@ npm install
 npm run dev
 ```
 
----
 
-# 📸 Screenshots
-
-## Home Page
-
-> *(Add Screenshot Here)*
-
----
-
-## Prediction Result
-
-> *(Add Screenshot Here)*
-
----
-
-## API Testing
-
-> *(Add Thunder Client Screenshot Here)*
-
----
 
 # 📈 Future Improvements
 
