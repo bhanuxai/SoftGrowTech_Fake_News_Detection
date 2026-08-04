@@ -1,8 +1,9 @@
 from utils.prediction import predict_news
 
-news = input("Enter News:\n\n")
+news = """
+WASHINGTON (Reuters) - The U.S. Senate voted on Tuesday to approve a new infrastructure funding bill after weeks of bipartisan negotiations. Officials said the legislation would improve transportation and public services across the country.
+"""
 
 result = predict_news(news)
 
-print("\nPrediction :", result["prediction"])
-print("Confidence :", result["confidence"], "%")
+print(result)

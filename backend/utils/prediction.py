@@ -7,8 +7,10 @@ from utils.preprocessing import clean_text
 # Load Saved Model & Vectorizer
 # -----------------------------
 
-MODEL_PATH = os.path.join("models", "fake_news_model.pkl")
-VECTORIZER_PATH = os.path.join("models", "tfidf_vectorizer.pkl")
+from config import Config
+
+MODEL_PATH = Config.MODEL_PATH
+VECTORIZER_PATH = Config.VECTORIZER_PATH
 
 model = joblib.load(MODEL_PATH)
 vectorizer = joblib.load(VECTORIZER_PATH)
@@ -28,9 +30,16 @@ def predict_news(news_text):
 
     prediction = model.predict(vectorized_text)[0]
 
-    confidence = model.predict_proba(vectorized_text).max()
+    probabilities = model.predict_proba(vectorized_text)[0]
+
+    fake_probability = float(round(probabilities[0] * 100, 2))
+    real_probability = float(round(probabilities[1] * 100, 2))
 
     return {
         "prediction": "Real" if prediction == 1 else "Fake",
-        "confidence": round(confidence * 100, 2)
+        "confidence": max(fake_probability, real_probability),
+        "probabilities": {
+            "fake": fake_probability,
+            "real": real_probability
+        }
     }
